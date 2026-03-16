@@ -7,7 +7,7 @@ use crossterm::{
 };
 use ratatui::{Terminal, prelude::CrosstermBackend};
 
-use crate::app::app::App;
+use crate::{app::app::App, ui::draw};
 
 pub mod app;
 pub mod collector;
@@ -26,11 +26,14 @@ fn main() -> io::Result<()> {
 
     // main loop
     while !app.should_quit {
-        terminal.draw(|_f| {})?;
+        app.update_data();
+        terminal.draw(|f| {
+            draw::draw_ui(f, &app);
+        })?;
 
         // event listener - key input
         // wait for 50ms for input
-        if event::poll(std::time::Duration::from_millis(50))? {
+        if event::poll(std::time::Duration::from_millis(500))? {
             if let Event::Key(key) = event::read()? {
                 // press 'q' to set should_quit (appstat) from 'false' to 'true'
                 if key.code == KeyCode::Char('q') {
