@@ -1,4 +1,7 @@
-use std::io::{self};
+use std::{
+    io::{self},
+    time::{Duration, Instant},
+};
 
 use crossterm::{
     ExecutableCommand,
@@ -24,22 +27,33 @@ fn main() -> io::Result<()> {
     // Start app state
     let mut app = App::new();
 
+    //tick-rate
+    let tick_rate = Duration::from_millis(1000);
+    let mut last_tick = Instant::now();
+
+    app.update_data();
     // main loop
     while !app.should_quit {
-        app.update_data();
-        terminal.draw(|f| {
-            draw::draw_ui(f, &app);
-        })?;
+        let timeout = tick_rate
+            .checked_sub(last_tick.elapsed())
+            .unwrap_or(Duration::ZERO);
 
-        // event listener - key input
-        // wait for 50ms for input
-        if event::poll(std::time::Duration::from_millis(500))? {
+        // Poll event with timout - sleep thread, no busy-wait
+        if event::poll(timeout)? {
             if let Event::Key(key) = event::read()? {
-                // press 'q' to set should_quit (appstat) from 'false' to 'true'
-                if key.code == KeyCode::Char('q') {
-                    app.quit();
+                match key.code {
+                    KeyCode::Char('q') => app.quit(),
+                    KeyCode::Down => app.next(),
+                    KeyCode::Up => app.previous(),
+                    _ => {}
                 }
             }
+        }
+        //Only update + render when enough 1s
+        if last_tick.elapsed() >= tick_rate {
+            app.update_data();
+            terminal.draw(|f| draw::draw_ui(f, &mut app))?;
+            last_tick = Instant::now();
         }
     }
 

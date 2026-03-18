@@ -7,7 +7,7 @@ use ratatui::{
 
 use crate::app::app::App;
 
-pub fn draw_ui(f: &mut Frame, app: &App) {
+pub fn draw_ui(f: &mut Frame, app: &mut App) {
     //Vertical
     let chunks = Layout::default()
         .direction(ratatui::layout::Direction::Vertical)
@@ -58,12 +58,7 @@ pub fn draw_ui(f: &mut Frame, app: &App) {
     f.render_widget(ram_gauge, header_chunks[1]); // put into the right side
 
     // ================| Main |================
-    // let main_content = Paragraph::new(" Proccess running placehold").block(
-    //     Block::default()
-    //         .title(" Tiến trình (Processes) ")
-    //         .borders(Borders::ALL),
-    // );
-    // f.render_widget(main_content, chunks[1]);
+
     let header_cells = ["PID", "Name", "CPU %", "RAM %"].iter().map(|h| {
         Cell::from(*h).style(
             Style::default()
@@ -103,10 +98,16 @@ pub fn draw_ui(f: &mut Frame, app: &App) {
         ],
     )
     .header(table_header)
-    .block(Block::default().title(" Processes ").borders(Borders::ALL));
+    .block(Block::default().title(" Processes ").borders(Borders::ALL))
+    .highlight_style(
+        Style::default()
+            .bg(Color::Blue)
+            .fg(Color::White)
+            .add_modifier(Modifier::BOLD),
+    )
+    .highlight_symbol(">> ");
 
-    f.render_widget(table, chunks[1]);
-
+    f.render_stateful_widget(table, chunks[1], &mut app.table_state);
     // Footer
     let footer = Paragraph::new(" [q] Thoát | [Up/Down] Cuộn chuột")
         .block(Block::default().title(" Hướng dẫn ").borders(Borders::ALL));
