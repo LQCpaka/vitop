@@ -108,9 +108,37 @@ pub fn draw_ui(f: &mut Frame, app: &mut App) {
     .highlight_symbol(">> ");
 
     f.render_stateful_widget(table, chunks[1], &mut app.table_state);
+
     // Footer
-    let footer = Paragraph::new(" [q] Thoát | [Up/Down] Cuộn chuột")
-        .block(Block::default().title(" Hướng dẫn ").borders(Borders::ALL));
+    let footer_text = if app.is_searching {
+        format!(
+            "Gõ tên ứng dụng: {}_ | [Enter]/[Esc] Xong",
+            app.search_query
+        )
+    } else if !app.search_query.is_empty() {
+        format!(
+            " Đang lọc từ khóa: '{}' | [/] Tìm tiếp | [Esc] Xóa bộ lọc | [q] Thoát",
+            app.search_query
+        )
+    } else {
+        " [/] Tìm kiếm | [k] Kill | [q] Thoát | [Up/Down] Cuộn chuột ".to_string()
+    };
+
+    let footer_block = Block::default()
+        .title(if app.is_searching {
+            " TÌM KIẾM"
+        } else {
+            " Hướng dẫn "
+        })
+        .borders(Borders::ALL)
+        .border_style(if app.is_searching {
+            Style::default().fg(Color::Yellow)
+        } else {
+            Style::default()
+        });
+
+    let footer = Paragraph::new(footer_text).block(footer_block);
+
     f.render_widget(footer, chunks[2]);
 
     // ================| Popup Kill Process |================

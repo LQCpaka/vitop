@@ -42,7 +42,7 @@ fn main() -> io::Result<()> {
         if event::poll(timeout)? {
             if let Event::Key(key) = event::read()? {
                 if key.kind == KeyEventKind::Press {
-                    // Nếu ĐANG HIỆN POPUP
+                    // POPUP STATE
                     if app.show_kill_popup {
                         match key.code {
                             KeyCode::Char('y') | KeyCode::Char('Y') => {
@@ -55,13 +55,27 @@ fn main() -> io::Result<()> {
                             _ => {} // Các phím khác bỏ qua
                         }
                     }
-                    // Nếu ĐANG Ở MÀN HÌNH CHÍNH
+                    // SEARCHING
+                    else if app.is_searching {
+                        match key.code {
+                            KeyCode::Enter | KeyCode::Esc => app.is_searching = false,
+                            KeyCode::Backspace => {
+                                app.search_query.pop();
+                            }
+                            KeyCode::Char(c) => app.search_query.push(c),
+                            _ => {}
+                        }
+                    }
+                    // MAIN SCREEN
                     else {
                         match key.code {
                             KeyCode::Char('q') => app.quit(),
                             KeyCode::Down => app.next(),
                             KeyCode::Up => app.previous(),
-                            KeyCode::Char('k') => app.ask_to_kill(), // Bấm 'k' để mở popup
+                            KeyCode::Char('k') => app.ask_to_kill(),
+
+                            KeyCode::Char('/') => app.is_searching = true,
+                            KeyCode::Esc => app.search_query.clear(),
                             _ => {}
                         }
                     }

@@ -49,6 +49,9 @@ impl App {
             show_kill_popup: false,
             target_pid: None,
             target_name: None,
+
+            search_query: String::new(),
+            is_searching: false,
         }
     }
 
@@ -64,6 +67,9 @@ impl App {
         self.ram_used = self.sys.used_memory();
         self.ram_total = self.sys.total_memory();
 
+        // formating search query
+        let query = self.search_query.to_lowercase();
+
         // Processes — refresh 2 lần cách nhau để có CPU usage chính xác
         self.sys
             .refresh_processes_specifics(ProcessRefreshKind::new().with_cpu().with_memory());
@@ -75,6 +81,14 @@ impl App {
             .sys
             .processes()
             .iter()
+            .filter(|(_pid, p)| {
+                if query.is_empty() {
+                    true
+                } else {
+                    //filter with process names
+                    p.name().to_lowercase().contains(&query)
+                }
+            })
             .map(|(pid, p)| ProcessInfo {
                 pid: pid.to_string(),
                 name: p.name().to_string(),
@@ -85,6 +99,15 @@ impl App {
 
         procs.sort_by(|a, b| b.mem.cmp(&a.mem));
         self.processes = procs;
+
+        //handle incase index outbound (query search feature)
+        if let Some(selected) = self.table_state.selected() {
+            if self.processes.is_empty() {
+                self.table_state.select(Some(0));
+            } else if selected >= self.processes.len() {
+                self.table_state.select(Some(self.processes.len() - 1));
+            }
+        }
     }
 
     pub fn next(&mut self) {
