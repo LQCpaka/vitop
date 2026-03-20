@@ -16,6 +16,9 @@ pub struct App {
     pub show_kill_popup: bool,
     pub target_pid: Option<String>,
     pub target_name: Option<String>,
+
+    pub search_query: String,
+    pub is_searching: bool,
 }
 
 impl App {

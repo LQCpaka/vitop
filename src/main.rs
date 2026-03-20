@@ -45,7 +45,10 @@ fn main() -> io::Result<()> {
                     // Nếu ĐANG HIỆN POPUP
                     if app.show_kill_popup {
                         match key.code {
-                            KeyCode::Char('y') | KeyCode::Char('Y') => app.confirm_kill(),
+                            KeyCode::Char('y') | KeyCode::Char('Y') => {
+                                app.confirm_kill();
+                                app.close_popup();
+                            }
                             KeyCode::Char('n') | KeyCode::Char('N') | KeyCode::Esc => {
                                 app.close_popup()
                             }
