@@ -24,7 +24,7 @@
 
 <br/>
 
-![Demo](https://placehold.co/900x500/0d1117/39d353?text=[ demo gif goes here ]&font=monospace)
+<img src="https://github.com/LQCpaka/vitop/blob/main/images/vitop-img.png" alt="vitop-images" />
 
 </div>
 
@@ -106,21 +106,7 @@ cargo run --release
 
 ---
 
-## ✦ Project Structure
 
-```
-vitop/
-├── src/
-│   ├── main.rs          # Entry point, thread setup
-│   ├── app.rs           # Application state
-│   ├── ui.rs            # TUI rendering (ratatui)
-│   ├── system.rs        # Data collection (sysinfo)
-│   └── events.rs        # Keyboard event handling
-├── Cargo.toml
-└── README.md
-```
-
----
 
 ## ✦ Roadmap
 
@@ -130,23 +116,6 @@ vitop/
 - [ ] Process tree view
 - [ ] Config file for custom colors / refresh rate
 - [ ] Package via `winget` / `scoop`
-
----
-
-## ✦ Contributing
-
-Contributions are welcome! If you have a feature idea or found a bug, feel free to [open an issue](https://github.com/LQCpaka/mini_htop/issues) or submit a pull request.
-
-```bash
-# Run in dev mode
-cargo run
-
-# Lint
-cargo clippy
-
-# Format
-cargo fmt
-```
 
 ---
 
