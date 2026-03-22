@@ -12,7 +12,7 @@
 <div align="center">
  
 [![Rust](https://img.shields.io/badge/built%20with-Rust-f74c00?style=for-the-badge&logo=rust&logoColor=white)](https://www.rust-lang.org/)
-[![Platform](https://img.shields.io/badge/platform-Windows%2011-0078D4?style=for-the-badge&logo=windows11&logoColor=white)](https://www.microsoft.com/windows/windows)
+[![Platform](https://img.shields.io/badge/platform-Windows%20-0078D4?style=for-the-badge&logo=windows&logoColor=white)](https://www.microsoft.com/windows/windows)
 [![License](https://img.shields.io/badge/license-MIT-22c55e?style=for-the-badge)](./LICENSE)
 [![Version](https://img.shields.io/badge/version-0.1.0-a78bfa?style=for-the-badge)](https://github.com/LQCpaka/mini_htop/releases)
 
@@ -20,7 +20,7 @@
 </div>
 <br/>
 
-> *Why open Task Manager when you can look this cool? Imagine taskmanager crashed with other apps, fck the windows, fck the shameless microsoft.*
+> *Why open Task Manager when you can look this cool? Imagine Task Manager crashed with other apps, fck the windows, fck the shameless microsoft.*
 
 <br/>
 
@@ -36,9 +36,10 @@ Windows has Task Manager. Windows also has 47 background `svchost.exe` processes
 
 No Electron. No .NET. No bloat. Just Rust.
 
----
 
 ## ✦ Features
+
+<div align="center">
 
 | | |
 |---|---|
@@ -49,7 +50,7 @@ No Electron. No .NET. No bloat. Just Rust.
 | ⚡ **Non-blocking UI** | Separate threads for data collection and rendering; the UI never freezes |
 | 🦀 **Memory Safe** | Zero undefined behavior, guaranteed by the Rust compiler |
 
----
+</div>
 
 ## ✦ Tech Stack
 
@@ -63,7 +64,6 @@ No Electron. No .NET. No bloat. Just Rust.
 
 </div>
 
----
 
 ## ✦ Keybindings
 
@@ -80,7 +80,6 @@ No Electron. No .NET. No bloat. Just Rust.
 
 </div>
 
----
 
 ## ✦ Installation
 
