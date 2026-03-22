@@ -1,29 +1,26 @@
 <div align="center">
-
-```
-
+<pre>
 ██╗   ██╗██╗████████╗ ██████╗ ██████╗ 
 ██║   ██║██║╚══██╔══╝██╔═══██╗██╔══██╗
 ██║   ██║██║   ██║   ██║   ██║██████╔╝
 ╚██╗ ██╔╝██║   ██║   ██║   ██║██╔═══╝ 
  ╚████╔╝ ██║   ██║   ╚██████╔╝██║     
   ╚═══╝  ╚═╝   ╚═╝    ╚═════╝ ╚═╝     
-                                                                      
-```
+</pre>
 </div>
 
-**A blazing-fast, lightweight terminal system monitor for Windows 11 — inspired by `htop`.**
-
-<br/>
-
+<div align="center">
+ 
 [![Rust](https://img.shields.io/badge/built%20with-Rust-f74c00?style=for-the-badge&logo=rust&logoColor=white)](https://www.rust-lang.org/)
 [![Platform](https://img.shields.io/badge/platform-Windows%2011-0078D4?style=for-the-badge&logo=windows11&logoColor=white)](https://www.microsoft.com/windows/windows)
 [![License](https://img.shields.io/badge/license-MIT-22c55e?style=for-the-badge)](./LICENSE)
 [![Version](https://img.shields.io/badge/version-0.1.0-a78bfa?style=for-the-badge)](https://github.com/LQCpaka/mini_htop/releases)
 
+**A super blazing-fast, lightweight terminal system monitor for Windows — inspired by `htop`.**
+</div>
 <br/>
 
-> *Why open Task Manager when you can look this cool?*
+> *Why open Task Manager when you can look this cool? Imagine taskmanager crashed with other apps, fck the windows, fck the shameless microsoft.*
 
 <br/>
 
