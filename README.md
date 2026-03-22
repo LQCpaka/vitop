@@ -24,7 +24,7 @@
 
 <br/>
 
-<img src="https://github.com/LQCpaka/vitop/blob/main/images/vitop-img.png" alt="vitop-images" />
+<img src="https://github.com/LQCpaka/vitop/blob/main/images/vitop-app.png" alt="vitop-images" />
 
 </div>
 
