@@ -52,7 +52,7 @@ fn main() -> io::Result<()> {
                             KeyCode::Char('n') | KeyCode::Char('N') | KeyCode::Esc => {
                                 app.close_popup()
                             }
-                            _ => {} // Các phím khác bỏ qua
+                            _ => {}
                         }
                     }
                     // SEARCHING

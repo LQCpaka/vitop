@@ -10,6 +10,7 @@ pub struct App {
     pub cpu_usage: f32,
     pub ram_used: u64,
     pub ram_total: u64,
+    pub disk_used: u64,
     pub processes: Vec<ProcessInfo>,
     pub table_state: TableState,
 
