@@ -41,8 +41,6 @@ No Electron. No .NET. No bloat. Just Rust.
 
 <div align="center">
 
-| | |
-|---|---|
 |  **Live Resource Gauges** | Color-coded CPU and Memory bars that update in real time |
 |  **Process Table** | Sorted by memory usage, showing PID, Name, CPU%, and RAM |
 |  **Fuzzy Search** | Instantly filter through hundreds of processes as you type |
